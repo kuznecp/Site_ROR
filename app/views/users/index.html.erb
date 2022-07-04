@@ -1,0 +1,17 @@
+<h1><%= t "layouts.application.users" %></h1>
+<% @users.each do |user| %>
+  <div class="well">
+    <h3><i class="glyphicon glyphicon-user"></i> <%= user.name %></h3>
+    <%= link_to user, class: 'btn btn-default' do %>
+      <i class="glyphicon glyphicon-resize-full"></i> <%= t "posts.index.read_more" %>
+    <% end %>
+    <% if session[:user_id] == user.id || session[:user_id] == 1 %>
+      <%= link_to edit_user_path(user), class: 'btn btn-default' do %>
+        <i class="glyphicon glyphicon-edit"></i> <%= t "posts.show.edit" %>
+      <% end %>
+      <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> <%= t "posts.show.delete" %></button>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

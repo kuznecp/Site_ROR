@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  user: top_ilya
+  host: localhost
+  password: 1234
+  port: 5432
+
+development:
+  <<: *default
+  database: ruby_zachet_development
+
+test:
+  <<: *default
+  database: ruby_zachet_test
